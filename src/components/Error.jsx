@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useRouteError } from "react-router-dom";
 import { Link, Outlet } from "react-router-dom";
 
@@ -7,10 +8,12 @@ function Error() {
     console.log(error);
 
     return (
-        <div>
+        <div style={{ alignItems: "center", justifyContent: "center", textAlign: "center" }}>
             <h1>An error happened</h1>
             <p>{error.data}</p>
-            <Link to={"/"}>Back to home page</Link>
+            <Button variant="contained">
+                <Link to={"/"}>Back to home page</Link>
+            </Button>
             <Outlet />
         </div>
     )
