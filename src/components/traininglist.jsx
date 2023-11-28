@@ -19,12 +19,13 @@ function Traininglist() {
         },
         { field: "duration", headerName: "Duration", sortable: true, filter: true },
         { field: "activity", headerName: "Activity", sortable: true, filter: true },
-        { field: "customer", headerName: "Customer", sortable: true, filter: true },
+        { field: "customer.firstname", headerName: "Customer: Firstname", sortable: true, filter: true },
+        { field: "customer.lastname", headerName: "Lastname", sortable: true, filter: true },
         {
             field: "Actions", cellRenderer: params => <Button color="error" variant="outlined" onClick={() => {
                 const confirmation = window.confirm("Do you want to delete this training?")
                 if (confirmation) {
-                    deleteTraining(params)
+                    deleteTraining(params.data.id)
                 } else {
                     getTrainings();
                 }
@@ -34,19 +35,20 @@ function Traininglist() {
 
     useEffect(() => getTrainings(), []);
 
-    const trainingLink = "https://traineeapp.azurewebsites.net/api/trainings";
+    const trainingLink = "https://traineeapp.azurewebsites.net/gettrainings";
+    const deleteLink = "https://traineeapp.azurewebsites.net/api/trainings"
 
     const getTrainings = () => {
         fetch(trainingLink)
             .then(response => response.json())
             .then(responseData => {
-                setTrainings(responseData.content)
+                setTrainings(responseData)
             })
             .catch(err => console.error(err))
     }
 
     const deleteTraining = (params) => {
-        fetch(params.data.links[0].href, { method: "DELETE" })
+        fetch(`${deleteLink}/${params}`, { method: "DELETE" })
             .then(response => {
                 if (response.ok) {
                     setMsg("Training deleted successfully!");

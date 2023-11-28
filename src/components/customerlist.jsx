@@ -71,7 +71,6 @@ function Customerlist() {
     }
 
     const deleteCustomer = (params) => {
-        console.log(params.data.links[0].href)
         fetch(params.data.links[0].href, { method: "DELETE" })
             .then(response => {
                 if (response.ok) {
@@ -113,7 +112,6 @@ function Customerlist() {
                 if (response.ok) {
                     setMsg("Training added!")
                     setOpen(true)
-                    console.log(training)
                 } else {
                     console.error("Error adding new training:", response.statusText);
                     alert("Something went wrong while trying to add a new training")
