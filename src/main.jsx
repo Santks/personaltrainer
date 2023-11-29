@@ -6,6 +6,7 @@ import Traininglist from './components/traininglist.jsx'
 import Customerlist from './components/customerlist.jsx'
 import Home from './components/Home.jsx'
 import Error from './components/Error.jsx'
+import TrainingCalendar from './components/TrainingCalendar.jsx'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "customers",
         element: <Customerlist />
+      },
+      {
+        path: "calendar",
+        element: <TrainingCalendar />
       }
     ]
   }

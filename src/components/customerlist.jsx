@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
@@ -14,6 +14,7 @@ function Customerlist() {
     const [open, setOpen] = useState(false);
 
     const columns = [
+
         { field: "firstname", headerName: "Firstname", sortable: true, filter: true },
         { field: "lastname", headerName: "Lastname", sortable: true, filter: true },
         { field: "streetaddress", headerName: "Street Address", sortable: true, filter: true },
@@ -122,12 +123,19 @@ function Customerlist() {
 
     const trainingLink = "https://traineeapp.azurewebsites.net/api/trainings";
 
+    const gridRef = useRef();
+
+    const csvExport = useCallback(() => {
+        gridRef.current.api.exportDataAsCsv();
+    }, [])
+
     return (
         <>
             <AddCustomer addNewCustomer={addNewCustomer} />
             <div className="ag-theme-material"
-                style={{ height: "700px", width: "95%", margin: "auto" }}>
+                style={{ height: "700px", width: "90%", margin: "auto" }}>
                 <AgGridReact
+                    ref={gridRef}
                     rowData={customers}
                     columnDefs={columns}
                     pagination={true}
@@ -141,7 +149,7 @@ function Customerlist() {
                     onClose={() => setOpen(false)}
                     message={msg} >
                 </Snackbar>
-
+                <Button variant="contained" style={{ marginBottom: "10px" }} onClick={csvExport}>Export to CSV</Button>
             </div>
         </>
     )
