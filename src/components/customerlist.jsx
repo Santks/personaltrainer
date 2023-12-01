@@ -6,6 +6,8 @@ import AddCustomer from "./addCustomer";
 import { Button, Snackbar } from "@mui/material";
 import EditCustomer from "./EditCustomer";
 import AddTraining from "./AddTraining";
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function Customerlist() {
 
@@ -24,7 +26,8 @@ function Customerlist() {
         { field: "phone", headerName: "Phone", sortable: true, filter: true },
         {
             field: "Actions",
-            cellRenderer: row => <EditCustomer customer={row.data} updateCustomer={updateCustomer} />
+            cellRenderer: row => <EditCustomer customer={row.data} updateCustomer={updateCustomer} />,
+            width: 115
         },
         {
             cellRenderer: params => <Button color="error" variant="outlined" onClick={() => {
@@ -34,10 +37,14 @@ function Customerlist() {
                 } else {
                     getCustomers();
                 }
-            }}>Delete</Button>
+            }}>Delete
+                <DeleteForeverIcon />
+            </Button>,
+            width: 160
         },
         {
-            cellRenderer: row => <AddTraining customer={row.data} addNewTraining={addNewTraining} />
+            cellRenderer: row => <AddTraining customer={row.data} addNewTraining={addNewTraining} />,
+            width: 220
         }
     ]
 
@@ -126,12 +133,19 @@ function Customerlist() {
     const gridRef = useRef();
 
     const csvExport = useCallback(() => {
-        gridRef.current.api.exportDataAsCsv();
+        const params = {
+            columnKeys: ["firstname", "lastname", "streetaddress", "postcode", "city", "email", "phone"]
+        }
+        gridRef.current.api.exportDataAsCsv(params);
     }, [])
 
     return (
         <>
             <AddCustomer addNewCustomer={addNewCustomer} />
+            <Button variant="contained" style={{ marginTop: "5px", marginLeft: "10px", marginBottom: "5px ", background: "green" }} onClick={csvExport}>
+                Export to CSV
+                <FileDownloadIcon />
+            </Button>
             <div className="ag-theme-material"
                 style={{ height: "700px", width: "90%", margin: "auto" }}>
                 <AgGridReact
@@ -149,7 +163,6 @@ function Customerlist() {
                     onClose={() => setOpen(false)}
                     message={msg} >
                 </Snackbar>
-                <Button variant="contained" style={{ marginBottom: "10px" }} onClick={csvExport}>Export to CSV</Button>
             </div>
         </>
     )

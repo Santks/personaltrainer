@@ -4,7 +4,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 import dayjs from "dayjs";
 import { Button, Snackbar } from "@mui/material";
-import TrainingCalendar from "./TrainingCalendar";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function Traininglist() {
 
@@ -30,7 +30,9 @@ function Traininglist() {
                 } else {
                     getTrainings();
                 }
-            }}>Delete</Button>
+            }}>Delete
+                <DeleteForeverIcon />
+            </Button>
         }
     ]
 
@@ -62,11 +64,8 @@ function Traininglist() {
             .catch(err => console.error(err))
     }
 
-    // const showCalendar = false;
-
     return (
         <>
-            {/* / {showCalendar && <TrainingCalendar trainings={trainings} />} */}
             <div className="ag-theme-material"
                 style={{ height: "700px", width: "95%", margin: "auto" }}>
                 <AgGridReact

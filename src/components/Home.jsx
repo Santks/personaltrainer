@@ -2,7 +2,10 @@
 function Home() {
 
     return (
-        <h1>Welcome to the personal trainer app!</h1>
+        <div style={{ textAlign: "center" }}>
+            <h1>Welcome to the Personal Trainer App!</h1>
+            <p>Take control of your fitness journey with our comprehensive tools and guidance.</p>
+        </div>
     )
 }
 

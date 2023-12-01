@@ -1,5 +1,8 @@
 import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } from "@mui/material";
 import { useState } from "react";
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import CancelIcon from '@mui/icons-material/Cancel';
+import SaveIcon from '@mui/icons-material/Save';
 
 function AddCustomer(props) {
 
@@ -31,41 +34,42 @@ function AddCustomer(props) {
 
     return (
         <>
-            <Button style={{ marginTop: "5px" }} variant="outlined" onClick={() => setOpen(true)}>New customer</Button>
+            <Button style={{ marginTop: "5px", marginBottom: "5px", background: "green" }} variant="contained" onClick={() => setOpen(true)}>
+                New customer <PersonAddIcon /></Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add a new customer to the list</DialogTitle>
                 <DialogContent>
-                    <TextField
+                    <TextField style={{ marginBottom: "8pxx", marginRight: "5px", marginTop: "8px" }}
                         label="Firstname"
                         name="firstname"
                         value={customer.firstname}
                         onChange={handleInput}
                     />
-                    <TextField
+                    <TextField style={{ marginBottom: "8px", marginTop: "8px" }}
                         label="Lastname"
                         name="lastname"
                         value={customer.lastname}
                         onChange={handleInput}
                     />
-                    <TextField
+                    <TextField style={{ marginBottom: "8px", marginRight: "5px" }}
                         label="Street address"
                         name="streetaddress"
                         value={customer.streetaddress}
                         onChange={handleInput}
                     />
-                    <TextField
+                    <TextField style={{ marginBottom: "8px" }}
                         label="Postcode"
                         name="postcode"
                         value={customer.postcode}
                         onChange={handleInput}
                     />
-                    <TextField
+                    <TextField style={{ marginBottom: "8px", marginRight: "5px" }}
                         label="City"
                         name="city"
                         value={customer.city}
                         onChange={handleInput}
                     />
-                    <TextField
+                    <TextField style={{ marginBottom: "8px" }}
                         label="Email"
                         name="email"
                         value={customer.email}
@@ -79,8 +83,8 @@ function AddCustomer(props) {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Close</Button>
-                    <Button onClick={save}>Add customer</Button>
+                    <Button onClick={handleClose} variant="outlined" color="error">Close <CancelIcon /></Button>
+                    <Button onClick={save} variant="contained" color="success">Add customer <SaveIcon /></Button>
                 </DialogActions>
             </Dialog>
         </>

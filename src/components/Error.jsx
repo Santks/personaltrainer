@@ -11,8 +11,8 @@ function Error() {
         <div style={{ alignItems: "center", justifyContent: "center", textAlign: "center" }}>
             <h1>An error happened</h1>
             <p>{error.data}</p>
-            <Button variant="contained">
-                <Link to={"/"}>Back to home page</Link>
+            <Button variant="contained" color="success">
+                <Link to={"/"} style={{ color: "white", }}>Back to home page</Link>
             </Button>
             <Outlet />
         </div>

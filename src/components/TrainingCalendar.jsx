@@ -1,7 +1,7 @@
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import dayjs from "dayjs";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 function TrainingCalendar() {
 
@@ -24,7 +24,7 @@ function TrainingCalendar() {
 
     const events = trainings ? trainings.map(training => ({
         start: new Date(training.date),
-        end: dayjs(training.date).add(training.duration, 'minutes').toDate(),
+        end: dayjs(training.date).add(training.duration, "minutes").toDate(),
         title: `${training.activity} - ${training.customer.firstname} ${training.customer.lastname}`
     })) : [];
 

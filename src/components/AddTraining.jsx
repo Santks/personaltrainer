@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
+import CancelIcon from '@mui/icons-material/Cancel';
+import SaveIcon from '@mui/icons-material/Save';
 
 function AddTraining(props) {
 
@@ -38,7 +41,7 @@ function AddTraining(props) {
     return (
         <>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <Button style={{ marginTop: "5px" }} variant="outlined" onClick={() => setOpen(true)}>New training</Button>
+                <Button style={{ marginTop: "5px" }} variant="outlined" color="success" onClick={() => setOpen(true)}>New training  <NoteAddIcon /></Button>
                 <Dialog open={open} onClose={handleClose} >
                     <DialogTitle>Add new training to the list</DialogTitle>
                     <DialogContent >
@@ -75,8 +78,8 @@ function AddTraining(props) {
                         </div>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose}>Close</Button>
-                        <Button variant="contained" onClick={save} >Add training</Button>
+                        <Button onClick={handleClose} variant="outlined" color="error">Close <CancelIcon /></Button>
+                        <Button variant="contained" onClick={save} color="success" >Add training <SaveIcon /></Button>
                     </DialogActions>
                 </Dialog>
             </LocalizationProvider>
