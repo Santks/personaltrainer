@@ -25,7 +25,7 @@ function App() {
       <AppBar position="sticky" style={{ background: "green" }}>
         <div style={{ display: "flex" }}>
           <IconButton onClick={() => setDrawerOpen(true)} style={{ color: "white" }}>
-            <MenuIcon sty />
+            <MenuIcon />
           </IconButton>
           <Typography variant="h6" style={{ marginTop: "3px" }}>Personal trainer app</Typography>
         </div>
