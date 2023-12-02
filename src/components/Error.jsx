@@ -12,7 +12,7 @@ function Error() {
             <h1>An error happened</h1>
             <p>{error.data}</p>
             <Button variant="contained" color="success">
-                <Link to={"/"} style={{ color: "white", }}>Back to home page</Link>
+                <Link to={"/personaltrainer/"} style={{ color: "white", }}>Back to home page</Link>
             </Button>
             <Outlet />
         </div>

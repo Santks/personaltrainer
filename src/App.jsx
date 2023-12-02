@@ -32,31 +32,31 @@ function App() {
       </AppBar>
       <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <List>
-          <ListItem component={Link} to="/" >
+          <ListItem component={Link} to="/personaltrainer" >
             <ListItemIcon>
               <HomeIcon style={iconStyle} />
             </ListItemIcon>
             <ListItemText primary="Home" style={listItemStyle} />
           </ListItem>
-          <ListItem component={Link} to="/trainings">
+          <ListItem component={Link} to="/personaltrainer/trainings">
             <ListItemIcon>
               <FitnessCenterIcon style={iconStyle} />
             </ListItemIcon>
             <ListItemText primary="Trainings" style={listItemStyle} />
           </ListItem>
-          <ListItem component={Link} to="/customers">
+          <ListItem component={Link} to="/personaltrainer/customers">
             <ListItemIcon>
               <PeopleIcon style={iconStyle} />
             </ListItemIcon>
             <ListItemText primary="Customers" style={listItemStyle} />
           </ListItem>
-          <ListItem component={Link} to="/calendar">
+          <ListItem component={Link} to="/personaltrainer/calendar">
             <ListItemIcon>
               <CalendarMonthIcon style={iconStyle} />
             </ListItemIcon>
             <ListItemText primary="Calendar" style={listItemStyle} />
           </ListItem>
-          <ListItem component={Link} to="/statistics">
+          <ListItem component={Link} to="/personaltrainer/statistics">
             <ListItemIcon>
               <PieChartIcon style={iconStyle} />
             </ListItemIcon>

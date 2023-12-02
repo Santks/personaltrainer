@@ -11,7 +11,7 @@ import Statistics from './components/Stats.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/personaltrainer",
     element: <App />,
     errorElement: <Error />,
     children: [
