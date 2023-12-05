@@ -79,7 +79,8 @@ function Customerlist() {
     }
 
     const deleteCustomer = (params) => {
-        fetch(params.data.links[0].href, { method: "DELETE" })
+        const updatedLink = params.data.links[0].href.replace("http://", "https://")
+        fetch(updatedLink, { method: "DELETE" })
             .then(response => {
                 if (response.ok) {
                     setMsg("Customer deleted successfully!");

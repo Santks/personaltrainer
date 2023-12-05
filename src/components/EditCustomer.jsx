@@ -19,7 +19,8 @@ function EditCustomer(props) {
     }
 
     const saveChanges = () => {
-        props.updateCustomer(customer, props.customer.links[0].href);
+        const updatedLink = props.customer.links[0].href.replace("http://", "https://")
+        props.updateCustomer(customer, updatedLink);
         setOpen(false)
     }
 
